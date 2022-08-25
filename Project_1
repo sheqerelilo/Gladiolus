@@ -1,0 +1,100 @@
+//  ---------------------------------------------
+//     Program 1: Gladiolus
+//        Prompt for the number of sections and display
+//        an ASCII gladiolus flower, with the sections centered
+//        above each other.
+
+//     Course: CS 141, Fall 2021. Tues 2pm lab
+//     System: Windows using CLion
+//     Author: Sheqere Lilo
+
+#include <iostream>   // for cin and cout
+#include <iomanip>    // for setw. The number in setw(...) is the total of blank spaces including the printed item.
+using namespace std;  // so that we don't need to preface every cin and cout with std::
+
+int main() {
+   int menuOption = 0;
+    cout << "Program 1: Gladiolus            \n"
+         << "Choose from among the following options:  \n"
+         << "   1. Display original graphic  \n"
+         << "   2. Display Gladiolus         \n"
+         << "   3. Exit the program          \n"
+         << "Your choice -> ";
+   cin >> menuOption;
+   if( menuOption == 3){ // menu option of 3 to exit
+      exit( 0);
+   }
+   else if( menuOption == 1) { // menu option 1 displays original ASCII graphic
+      cout << endl;
+      cout << setw(5) << "  |\\__/,|      (\\   \n"
+           << setw(5) << "  |_ _  |. -- .) )  \n"
+           << setw(5) << "  ( T   )        /  \n"
+           << setw(5) << "  (((^_(((/(((_/    \n"
+           << endl;
+      cout << setw(5) << " ";
+      for (int i=0; i<42; i++) {
+         cout << "-"; // displays a line at the bottom of ASCII graphic
+      }
+   
+   cout << endl; // end if (menuOption == 1) 
+   }
+   else if(menuOption == 2) {  // menu option displays gladiolus
+      int numberOfSections = 0;
+      cout << "Number of sections -> ";
+      cin >> numberOfSections;
+      for (int i = 1; i <= numberOfSections; i++) {
+         int blockSpace = numberOfSections - i + 1;
+         int leftBlock = i + 1;
+
+         cout << setw(numberOfSections + 3) << "---" << endl;
+
+         for (int j = 1; j < i; j++)  //function helps with printing the top blocks ()
+         {
+            cout << setw(numberOfSections + 1 - j) << "(" << setw(j * 2 + 2) << ")"; //input first increases then decreases
+            cout << endl;
+         }
+
+
+         cout << setw(blockSpace) << "(" << setw(leftBlock)<< "@" << setw(leftBlock) << ")";
+         cout << endl;
+
+         for (int k = 1; k < i; k++) { //function helps printing the down blocks ()
+            cout << setw(blockSpace + k) << "(" << setw(leftBlock*2 - 2*k) << ")";
+            cout << endl;
+
+            }
+        }
+        cout << setw(numberOfSections + 3) << "---" << endl;
+
+
+        
+        for(int s = 1; s <= numberOfSections; s++)
+
+        {
+//            int oddStem = 0;
+            
+            switch(s % 2 == 0) //the number of sections is even
+            {
+               case true:
+                   cout << setw(numberOfSections + 1)  << "\\" << "|" << endl;
+                   break;
+               case false:
+                   cout << setw(numberOfSections + 2) << "|" << "/" << endl;
+                   break;
+            }
+
+            cout << setw(numberOfSections + 2) << "|" << endl;
+            }
+           
+
+        }
+
+
+    cout << "Exiting" << endl;
+        return 0;
+    }
+
+
+
+
+   
